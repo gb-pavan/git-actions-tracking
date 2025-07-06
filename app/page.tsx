@@ -101,17 +101,12 @@ export default function GitActivityDashboard() {
     }
   };
 
-  // Initial data fetch and ISR simulation with 15-second intervals
   useEffect(() => {
     fetchData();
     const interval = setInterval(() => fetchData(true), 15000);
     return () => clearInterval(interval);
   }, []);
 
-  // const authors = useMemo(() => {
-  //   const uniqueAuthors = [...new Set(activities.map(activity => activity.author))];
-  //   return uniqueAuthors.sort();
-  // }, [activities]);
   const authors = useMemo(() => {
     const uniqueAuthors = Array.from(new Set(activities.map(activity => activity.author)));
     return uniqueAuthors.sort();
@@ -173,7 +168,6 @@ export default function GitActivityDashboard() {
     fetchData(true);
   };
 
-  // Show full skeleton on initial load
   if (isLoading && activities.length === 0) {
     return <DashboardSkeleton />;
   }

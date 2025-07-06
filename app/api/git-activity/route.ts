@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-// const DATA_SOURCE_URL = 'https://capture-webhook.onrender.com/api/updates';
 const DATA_SOURCE_URL = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/updates`;
 
 interface GitActivity {
@@ -27,9 +26,8 @@ export async function GET(request: NextRequest) {
   try {
     await new Promise(resolve => setTimeout(resolve, 200));
 
-    // const response = await fetch(DATA_SOURCE_URL);
     const response = await fetch(DATA_SOURCE_URL, {
-  cache: 'no-store', // 👈 Important: disables caching entirely
+  cache: 'no-store',
 });
 
     if (!response.ok) {

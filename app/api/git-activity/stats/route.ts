@@ -2,7 +2,6 @@ import { NextRequest, NextResponse } from 'next/server';
 
 export async function GET(request: NextRequest) {
   try {
-    // Simulate fetching stats from the repository
     await new Promise(resolve => setTimeout(resolve, 150));
 
     const stats = {
